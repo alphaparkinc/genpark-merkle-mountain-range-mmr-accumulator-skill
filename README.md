@@ -1,30 +1,18 @@
-# genpark-merkle-mountain-range-mmr-accumulator-skill
+# Merkle Mountain Range (MMR) Accumulator Skill
 
-[![Agentic Skill](https://img.shields.io/badge/GenPark-Agentic__Skill-blue.svg)](https://github.com/alphaparkinc/genpark-merkle-mountain-range-mmr-accumulator-skill)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-brightgreen.svg)](https://python.org)
-[![Zero Dependencies](https://img.shields.io/badge/Dependencies-0%20Pip-orange.svg)](#)
-[![Dual Org Verified](https://img.shields.io/badge/GitHub-Dual__Org-purple.svg)](#)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-> Merkle Mountain Range (MMR) append-only cryptographic accumulator supporting O(log N) inclusion proofs, peak bagging, and pruning.
-
-## Architecture Overview
-
-```mermaid
-flowchart TD
-    A[Distributed Nodes / Clocks] -->|Tick / Synchronize / Commit| B[MCP Server / Client]
-    B --> C[genpark-merkle-mountain-range-mmr-accumulator-skill Engine]
-    C --> D[HLC Monotonicity / Marzullo Intersection / MMR Accumulation]
-    D --> E[Causal Timestamps & Proven Commitments]
-    E -->|Structured Payload| A
-```
+Robust, zero-dependency Python implementation of **Merkle Mountain Ranges (MMR)** for append-only verifiable ledgers and light-client consensus.
 
 ## Features
-- **0 External Pip Dependencies**: Pure Python standard library implementation.
-- **MCP Protocol Ready**: Includes Model Context Protocol server script (`mcp_server.py`).
-- **Production Standard**: Formal causality proofs, skew tolerance, and accumulator benchmarks.
+- **Append-Only History**: Adds new transaction leaves in \(O(1)\) amortized hashing time.
+- **Logarithmic Inclusion Proofs**: Verifies leaf membership via peak bag roots in \(O(\log N)\) proof bytes.
+- **Zero External Dependencies**: Pure Python standard library (`hashlib`).
+- **Native MCP Protocol**: JSON-RPC 2.0 stdio server compatible with Claude Desktop, Cursor, and Windsurf.
 
-## Quick Start
-```bash
-python example_usage.py
+## Architecture
+```mermaid
+graph TD
+    L1["Leaf 1"] & L2["Leaf 2"] --> P1["Peak 1 (Height 1)"]
+    L3["Leaf 3"] & L4["Leaf 4"] --> P2["Peak 2 (Height 1)"]
+    P1 & P2 --> RootPeak["Mountain Peak Root (Height 2)"]
+    L5["Leaf 5"] --> SinglePeak["Isolated Peak 3"]
 ```
