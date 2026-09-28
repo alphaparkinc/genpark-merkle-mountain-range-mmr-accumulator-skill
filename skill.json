@@ -1,13 +1,20 @@
 {
   "name": "genpark-merkle-mountain-range-mmr-accumulator-skill",
   "version": "1.0.0",
-  "description": "Merkle Mountain Range (MMR) append-only cryptographic accumulator supporting O(log N) inclusion proofs, peak bagging, and pruning.",
+  "description": "Append-only Merkle Mountain Range (MMR) peak accumulator with logarithmic inclusion proofs",
+  "category": "Service",
+  "dependencies": [],
   "topics": [
-    "genpark-skill",
-    "agentic-ai",
+    "mcp",
     "merkle-mountain-range",
     "mmr",
     "cryptographic-accumulator",
-    "blockchain-pruning"
+    "inclusion-proof",
+    "blockchain-data-structure",
+    "python-standard-library",
+    "agent-skills",
+    "merkle-tree",
+    "zero-knowledge",
+    "light-client"
   ]
 }
