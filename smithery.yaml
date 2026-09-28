@@ -1,0 +1,6 @@
+name: genpark-merkle-mountain-range-mmr-accumulator-skill
+version: 1.0.0
+description: Append-only Merkle Mountain Range (MMR) peak accumulator with logarithmic inclusion proofs
+command: python
+args:
+  - mcp_server.py
