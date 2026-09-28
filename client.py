@@ -1,20 +1,22 @@
+"""Merkle Mountain Range (MMR) Accumulator Engine.
+100% Python Standard Library.
+"""
+
 import hashlib
 
 class MerkleMountainRange:
-    """Append-only Merkle Mountain Range (MMR) cryptographic accumulator."""
+    """Append-only Merkle Mountain Range (MMR) structure."""
     def __init__(self):
-        self.leaves = []
+        self.nodes = []
 
-    def append(self, data: str) -> dict:
-        leaf_hash = hashlib.sha256(data.encode()).hexdigest()
-        self.leaves.append(leaf_hash)
-        return {
-            "data": data,
-            "leaf_hash": leaf_hash,
-            "mmr_size": len(self.leaves)
-        }
+    @staticmethod
+    def _hash(data):
+        return hashlib.sha256(data.encode("utf-8")).hexdigest()
 
-    def bag_peaks(self) -> str:
-        if not self.leaves:
-            return ""
-        return hashlib.sha256("".join(self.leaves).encode()).hexdigest()
+    def append(self, leaf_data):
+        h = self._hash(f"leaf:{leaf_data}")
+        self.nodes.append(h)
+        return h
+
+    def get_root_peaks(self):
+        return [self.nodes[-1]] if self.nodes else []
